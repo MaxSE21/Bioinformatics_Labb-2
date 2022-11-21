@@ -1,20 +1,11 @@
-import java.awt.*;
-import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
 
-        File file = new File("");
+    public static void main(String[] args) throws FileNotFoundException {
 
-
-
-        System.out.println("De funka");
-
-        System.out.println("Det fungerade värkligen");
-
-
+        labb2Exercise1 labb2 = new labb2Exercise1();
+        labb2.lab2Exercises1();
     }
-
 
 }
