@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.FileSystemNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -12,41 +11,26 @@ public class labb2Exercise1 {
 
     public Scanner scanner;
 
-    public int x1;
-    public int x2;
-
-    public int y1;
-    public int y2;
-
-    public int z1;
-    public int z2;
-
     public static String Xcoordinate = "";
     public static String Ycoordinate = "";
     public static String Zcoordinate = "";
 
     public static Double[] coordinates_array = {0.0, 0.0, 0.0};
-    public static HashMap<Integer, List<Double>> dataMap = new HashMap<Integer,List<Double>>();
+    public static HashMap<Integer, Double[]> dataMap = new HashMap<Integer, Double[]>();
 
 
     public void lab2Exercises1() throws FileNotFoundException {
 
 
+
         readFile(scanner, "E:\\Programming\\Java stuff\\bioinformatics-lab-2\\Text_files\\test_q1.txt");
         System.out.println((List.of(dataMap)));
 
+        DistanceCalculator DistanceCalculator = new DistanceCalculator(dataMap);
+
+
+
     }
-
-
-    public static double calculateDistance(int x1, int x2, int y1, int y2, int z1, int z2) {
-
-        double delta = 0;
-
-        delta = Math.sqrt(((x2 - x1) ^ 2) + ((y2 - y1)) ^ 2 + ((z2 - z1) ^ 2));
-
-        return delta;
-    }
-
 
     public static void readFile(Scanner scanner, String filePath) throws FileNotFoundException {
 
@@ -104,7 +88,7 @@ public class labb2Exercise1 {
                 coordinates_array[2] = Double.valueOf(Zcoordinate);
 
                 //Sets coordinates to one key representing the atom.
-                dataMap.put(linecount, List.of(coordinates_array));
+                dataMap.put(linecount, (coordinates_array));
                 System.out.println((List.of(dataMap)));
 
                 //Resets Coordinates
