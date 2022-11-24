@@ -9,25 +9,25 @@ public class labb2Exercise1 {
 
     //Alla 90 (alla jämförelser iinluding  copy )världen ta den störtas diffen oc hta det som är närmast den tills du får slut på världen. Du måste dock ta bort duåplicates på nå¨got sät't annars blir det fl
 
-    public Scanner scanner;
+    public Scanner scanner; 
 
-    public static String Xcoordinate = "";
-    public static String Ycoordinate = "";
-    public static String Zcoordinate = "";
-
-    public static double[] coordinates_array = {0.0, 0.0, 0.0};
     public static HashMap<Integer, double[]> dataMap = new HashMap<Integer, double[]>();
-
 
     public void lab2Exercises1() throws FileNotFoundException {
 
         readFile(scanner, "Text_files/test_q1.txt");
-        DistanceCalculator DistanceCalculator = new DistanceCalculator(dataMap);
-
+        double[][] deltaMatrix = DistanceCalculator.createDeltaMatrix(dataMap);
+        DistanceCalculator.findChain(deltaMatrix);
 
     }
 
     public static void readFile(Scanner scanner, String filePath) throws FileNotFoundException {
+
+        double[] coordinates_array = {0.0, 0.0, 0.0};
+
+        String Xcoordinate = "";
+        String Ycoordinate = "";
+        String Zcoordinate = "";
 
         try {
             File file = new File(filePath);
