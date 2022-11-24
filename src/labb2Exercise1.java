@@ -15,28 +15,21 @@ public class labb2Exercise1 {
     public static String Ycoordinate = "";
     public static String Zcoordinate = "";
 
-    public static Double[] coordinates_array = {0.0, 0.0, 0.0};
-    public static HashMap<Integer, Double[]> dataMap = new HashMap<Integer, Double[]>();
+    public static double[] coordinates_array = {0.0, 0.0, 0.0};
+    public static HashMap<Integer, double[]> dataMap = new HashMap<Integer, double[]>();
 
 
     public void lab2Exercises1() throws FileNotFoundException {
 
-
-
-        readFile(scanner, "E:\\Programming\\Java stuff\\bioinformatics-lab-2\\Text_files\\test_q1.txt");
-        System.out.println((List.of(dataMap)));
-
+        readFile(scanner, "Text_files/test_q1.txt");
         DistanceCalculator DistanceCalculator = new DistanceCalculator(dataMap);
-
 
 
     }
 
     public static void readFile(Scanner scanner, String filePath) throws FileNotFoundException {
 
-
         try {
-            System.out.println((List.of(coordinates_array)));
             File file = new File(filePath);
             scanner = new Scanner(file);
             String lineContent = "";
@@ -77,24 +70,30 @@ public class labb2Exercise1 {
                             return;
                         }
                     }
+
+                    //end of for loop
+
                 }
 
                 //resets starting coordinate
                 tempCoordinate = "x";
 
                 //Sets x, y ,z to list that can be put  as value for hashmap
-                coordinates_array[0] = Double.valueOf(Xcoordinate);
-                coordinates_array[1] = Double.valueOf(Ycoordinate);
-                coordinates_array[2] = Double.valueOf(Zcoordinate);
+                coordinates_array[0] = Double.parseDouble((Xcoordinate));
+                coordinates_array[1] = Double.parseDouble((Ycoordinate));
+                coordinates_array[2] = Double.parseDouble((Zcoordinate));
 
-                //Sets coordinates to one key representing the atom.
-                dataMap.put(linecount, (coordinates_array));
-                System.out.println((List.of(dataMap)));
+                //Set coordinates to one key representing the atom.
+                dataMap.put(linecount, coordinates_array.clone());
 
-                //Resets Coordinates
+                //Reset Coordinates and coordinates list
                 Xcoordinate = "";
                 Ycoordinate = "";
                 Zcoordinate = "";
+                coordinates_array[0] = 0.0;
+                coordinates_array[1] = 0.0;
+                coordinates_array[2] = 0.0;
+
             }
 
 
